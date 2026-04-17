@@ -1,6 +1,14 @@
 .idea/
 vendor/
 composer.lock
+<<<<<<< Updated upstream
 .php-cs-fixer.cache
 .phpunit.cache/
+=======
+.coverage-report/
+.php-cs-fixer.cache
+.php_cs.cache
+.phpunit.cache/
+.phpunit.result.cache
+>>>>>>> Stashed changes
 clover.xml
