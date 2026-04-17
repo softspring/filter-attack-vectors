@@ -6,6 +6,31 @@ use PHPUnit\Framework\TestCase;
 
 class FilterScriptTest extends TestCase
 {
+    public function testShouldBlockWordPressPaths(): void
+    {
+        self::assertTrue(softspring_filter_attack_vectors_should_block('/wp-admin/install.php'));
+    }
+
+    public function testShouldBlockPhpRequests(): void
+    {
+        self::assertTrue(softspring_filter_attack_vectors_should_block('/index.php'));
+    }
+
+    public function testShouldBlockEnvInjectionRequests(): void
+    {
+        self::assertTrue(softspring_filter_attack_vectors_should_block('/?foo=bar+--env=prod'));
+    }
+
+    public function testShouldAllowSafeRequests(): void
+    {
+        self::assertFalse(softspring_filter_attack_vectors_should_block('/articles/hello-world'));
+    }
+
+    public function testShouldAllowWhenRequestUriIsMissing(): void
+    {
+        self::assertFalse(softspring_filter_attack_vectors_should_block(null));
+    }
+
     public function testBlocksWordPressPaths(): void
     {
         [$exitCode, $output] = $this->runScript('/wp-admin/install.php');

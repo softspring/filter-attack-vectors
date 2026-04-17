@@ -7,17 +7,26 @@ function softspring_filter_attack_vectors_do_exit(): void
     exit;
 }
 
-// Filter WordPress probing requests.
-if (isset($_SERVER['REQUEST_URI']) && str_starts_with($_SERVER['REQUEST_URI'], '/wp-')) {
-    softspring_filter_attack_vectors_do_exit();
+function softspring_filter_attack_vectors_should_block(?string $requestUri): bool
+{
+    if (null === $requestUri) {
+        return false;
+    }
+
+    // Filter WordPress probing requests.
+    if (str_starts_with($requestUri, '/wp-')) {
+        return true;
+    }
+
+    // Filter direct PHP file requests.
+    if (str_contains($requestUri, '.php')) {
+        return true;
+    }
+
+    // Filter Symfony env injection attempts.
+    return str_contains($requestUri, '+--env=');
 }
 
-// Filter direct PHP file requests.
-if (isset($_SERVER['REQUEST_URI']) && str_contains($_SERVER['REQUEST_URI'], '.php')) {
-    softspring_filter_attack_vectors_do_exit();
-}
-
-// Filter Symfony env injection attempts.
-if (isset($_SERVER['REQUEST_URI']) && str_contains($_SERVER['REQUEST_URI'], '+--env=')) {
+if (softspring_filter_attack_vectors_should_block($_SERVER['REQUEST_URI'] ?? null)) {
     softspring_filter_attack_vectors_do_exit();
 }
