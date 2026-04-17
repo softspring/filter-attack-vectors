@@ -16,5 +16,8 @@ return RectorConfig::configure()
         SetList::DEAD_CODE,
         SetList::TYPE_DECLARATION,
     ])
+    ->withSkip([
+        __DIR__.'/tests/bootstrap.php',
+    ])
     ->withImportNames()
     ->withPhpVersion(PhpVersion::PHP_84);
