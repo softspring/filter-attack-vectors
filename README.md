@@ -6,7 +6,7 @@
 [![PHP Version](https://img.shields.io/packagist/dependency-v/softspring/filter-attack-vectors/php?style=flat-square)](https://github.com/softspring/filter-attack-vectors/blob/6.0/composer.json)
 [![Downloads](https://img.shields.io/packagist/dt/softspring/filter-attack-vectors?style=flat-square)](https://packagist.org/packages/softspring/filter-attack-vectors)
 [![CI](https://img.shields.io/github/actions/workflow/status/softspring/filter-attack-vectors/ci.yml?branch=6.0&style=flat-square&label=CI)](https://github.com/softspring/filter-attack-vectors/actions/workflows/ci.yml)
-[![Coverage](https://img.shields.io/codecov/c/github/softspring/filter-attack-vectors?branch=6.0&style=flat-square)](https://codecov.io/gh/softspring/filter-attack-vectors)
+[![Coverage](https://img.shields.io/codecov/c/github/softspring/filter-attack-vectors?branch=6.0&style=flat-square)](https://app.codecov.io/gh/softspring/filter-attack-vectors/tree/6.0)
 
 This component blocks a very small set of noisy request patterns before the application continues processing them.
 
