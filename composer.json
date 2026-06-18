@@ -1,28 +1,10 @@
 {
     "name": "softspring/filter-attack-vectors",
     "description": "Utils to filter attack vectors",
-    "type": "library",
     "license": "AGPL-3.0-or-later",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
+    "type": "library",
     "require": {
         "php": ">=8.4"
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Softspring\\Component\\FilterAttackVectors\\Tests\\": "tests/"
-        }
-    },
-    "autoload": {
-        "files": [
-            "scripts/filter.php"
-        ]
-    },
-    "config": {
-        "sort-packages": true,
-        "allow-plugins": {
-            "ergebnis/composer-normalize": true
-        }
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.50",
@@ -31,6 +13,29 @@
         "phpunit/phpunit": "^12.5",
         "rector/rector": "^2.3",
         "symfony/yaml": "^6.4 || ^7.4 || ^8.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "files": [
+            "scripts/filter.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Softspring\\Component\\FilterAttackVectors\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-6.0": "6.0.x-dev"
+        }
     },
     "scripts": {
         "fix": [
@@ -54,10 +59,5 @@
             "composer update --no-scripts --ansi --prefer-lowest --prefer-stable",
             "@run-tests"
         ]
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-6.0": "6.0.x-dev"
-        }
     }
 }
