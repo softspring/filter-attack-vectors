@@ -71,7 +71,7 @@ class FilterScriptTest extends TestCase
         $phpCode = \sprintf(
             '$_SERVER["REQUEST_URI"] = %s; require %s; echo "ALLOWED";',
             var_export($requestUri, true),
-            var_export(\dirname(__DIR__).'/scripts/filter.php', true)
+            var_export(__DIR__.'/../scripts/filter.php', true)
         );
 
         $command = \sprintf('php -r %s', escapeshellarg($phpCode));
